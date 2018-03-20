@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<title>Form page</title>
+
+<head>
+    <script type="text/javascript">
+    function inputonly(){    
+    var s=document.getElementById("name").value;
+    var regex1 = /[^a-z]/gi;
+    if(s.match(regex1))
+        {  
+        document.getElementById("name").style.border = "red solid 1px";
+        alert("name should contain letters only");
+        return false; 
+        }
+  
+    var s1=document.getElementById("mob").value;
+    var regex12 = /[^0-9]/gi;
+    if(s1.match(regex12))
+        {
+          
+        document.getElementById("mob").style.border = "red solid 1px";
+        alert("mobile number should contain numbers only");
+        return false; 
+        }
+    var s2=document.getElementById("place").value;
+    if(s2=="--none--")
+            {
+                alert("place is required");
+                document.getElementById("place").style.border = "red solid 1px";  
+                return false; 
+            }
+    var s3=document.getElementById("mail").value;
+   // var regex13= /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$./gi
+    if(s3=="")
+        {
+         alert("please provide a valid emial");
+            document.getElementById("mail").style.border = "red solid 1px";  
+            return false;
+        }
+    document.getElementById("formdiv").innerHTML=(s+" "+s1+" "+s2+" "+s3);    
+        
+    }
+    
+    
+    </script>
+<style type="text/css">    
+    p
+    {
+    
+    font-size: 20px;
+    color: blue;
+    
+    margin: 10px 0;    
+    } 
+
+#formdiv
+    {
+   background-color: darkgrey; 
+    width: 250px;
+    position: absolute;  
+    top:20%;
+    left:40%; 
+    margin:20px;
+    padding:10px;
+    border-radius: 4px;
+    box-shadow: 5px 5px 2px grey;
+    font-weight:bolder;
+    }
+    
+    
+</style>
+</head>    
+<body>
+    <div id="formdiv">
+    <form action="form.html" post="get" onsubmit="return inputonly()" >
+     <label for="name"><p>Name:</p></label>
+       <input type="text" id="name" placeholder="Name" required><br>
+     <label for="mob"><p>Phone Number:</p></label>        
+       <input type="text" id="mob" placeholder="mobile number" style ="padding: -20px;"required><br>
+        <label for="place"><p>City:</p></label>
+        <select required id="place">
+        <option>--none--</option>    
+        <option>  Delhi</option>
+        <option>  Mumbai</option>
+        <option> Kolkata</option>
+        <option> Chennai</option>
+       </select><br>
+     <label for="mail"><p>Email:</p></label>  
+        <input type="email" id="mail" placeholder="example@ex.com" required><br><br>
+        <input type="submit" name ="submit" value="submit">        
+    </form>
+ </div>
+</body>
+</html>
